@@ -1,0 +1,66 @@
+﻿@model MediaMeetV2.Models.Member
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Member</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.assocProfile.introduction)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.assocProfile.introduction)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.userName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.userName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.memberName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.memberName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dateJoined)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dateJoined)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.lastLogin)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.lastLogin)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProfileID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProfileID)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

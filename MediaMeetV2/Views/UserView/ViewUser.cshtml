@@ -1,0 +1,21 @@
+﻿@model MediaMeetV2.Models.UserViewModel
+@{
+    ViewBag.Title = "ViewUser";
+}
+
+<h2>@Html.DisplayFor(model => model.userName)'s Page</h2>
+<h3>"@Html.DisplayFor(model => model.introduction)"</h3>
+
+<p>INFO</p>
+<p>Name: @Html.DisplayFor(model => model.memberName)</p>
+<p>Location: @Html.DisplayFor(model => model.city), @Html.DisplayFor(model => model.state)</p>
+<p>Gender: @Html.DisplayFor(model => model.gender)</p>
+<p>Birthday: @Html.DisplayFor(model => model.birthDate)<p>
+
+    @foreach(var inter in Model.assocInterests)
+    {
+        <p>@Html.DisplayFor(x => inter.name)</p>
+    }
+
+<P>@Html.ActionLink("Add an interest", "UserAddInterest", new { id = Model.Id }, new {@class = "btn btn-default" })</P>
+

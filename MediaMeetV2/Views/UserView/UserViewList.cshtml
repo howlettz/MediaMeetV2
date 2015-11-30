@@ -1,0 +1,41 @@
+﻿@model List<MediaMeetV2.Models.UserViewModel>
+@{
+    ViewBag.Title = "ViewUserList";
+}
+
+<h2>ViewUserList</h2>
+<table class="table">
+    <tr>
+        <td>
+            Username
+        </td>
+        <td>
+            Real Name
+        </td>
+        <td>
+            Location
+        </td>
+        <td>
+            ---
+        </td>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.userName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.memberName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.city), @Html.DisplayFor(modelItem => item.state)
+            </td>
+            <td>
+                @Html.ActionLink("View User Info", "ViewUser", new { id = item.Id }, new { @class = "btn btn-default" })
+            </td>
+        </tr>
+    }
+</table>

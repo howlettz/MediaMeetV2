@@ -1,0 +1,58 @@
+﻿@model MediaMeetV2.Models.Message
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Message</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.recipiantID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.recipiantID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.messageText)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.messageText)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dateSent)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dateSent)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.read)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.read)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.threadID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.threadID)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

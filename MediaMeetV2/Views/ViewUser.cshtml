@@ -1,0 +1,12 @@
+﻿@model MediaMeetV2.Models.UserViewModel
+@{
+    ViewBag.Title = "UserView";
+}
+
+<h2>User View</h2>
+
+<p>INFO</p>
+<p>Hello! My name is @Html.DisplayFor(model => model.memberName)</p>
+<p>but you can call me @Html.DisplayFor(model => model.userName)</p>
+<p>I'm from @Html.DisplayFor(model => model.city)</p>
+<p>and I always say "@Html.DisplayFor(model => model.introduction)"</p>
