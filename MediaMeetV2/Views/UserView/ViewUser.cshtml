@@ -7,26 +7,26 @@
 
 <h2>@Html.DisplayFor(model => model.userName)'s Page</h2>
 <h3>"@Html.DisplayFor(model => model.introduction)"</h3>
+<div>@Html.ActionLink("Add an interest", "UserAddInterest", new { id = Model.Id }, new { @class = "btn btn-info" }) @Html.ActionLink("Add a Friend", "UserAddFriend", new { id = Model.Id }, new { @class = "btn btn-info" })</div>
 
-<p>INFO</p>
-<p>Name: @Html.DisplayFor(model => model.memberName)</p>
-<p>Location: @Html.DisplayFor(model => model.city), @Html.DisplayFor(model => model.state)</p>
-<p>Gender: @Html.DisplayFor(model => model.gender)</p>
-<p>Birthday: @Html.DisplayFor(model => model.birthDate)<p>
+<h4>Details</h4>
+<p>&nbsp;&nbsp;<b>Name:</b> @Html.DisplayFor(model => model.memberName)</p>
+<p>&nbsp;&nbsp;<b>Location:</b> @Html.DisplayFor(model => model.city), @Html.DisplayFor(model => model.state)</p>
+<p>&nbsp;&nbsp;<b>Gender:</b> @Html.DisplayFor(model => model.gender)</p>
+<p>&nbsp;&nbsp;<b>Birthday:</b> @Html.DisplayFor(model => model.birthDate.Month)/@Html.DisplayFor(model => model.birthDate.Day)/ @Html.DisplayFor(model => model.birthDate.Year)<p>
 
     <h4>Interests</h4>
     @foreach(var inter in Model.Interests)
     {
-        <p>@Html.DisplayFor(x => inter.name)</p>
+        <p>&nbsp;&nbsp;<b>@Html.DisplayFor(x => inter.name):</b>  @Html.DisplayFor(x => inter.description)</p>
     }
 
     <h4>Friend IDs</h4>
 
     @foreach (var name in ViewBag.Friendz)
     {
-        <p>@Html.DisplayFor(x => name)</p>
+        <p>&nbsp;&nbsp;<b>@Html.DisplayFor(x => name)</b></p>
     }
 
-<P>@Html.ActionLink("Add an interest", "UserAddInterest", new { id = Model.Id }, new {@class = "btn btn-default" })</P>
-<P>@Html.ActionLink("Add a Friend", "UserAddFriend", new { id = Model.Id }, new { @class = "btn btn-default" })</P>
+<P><br />@Html.ActionLink("Back to List", "UserViewList", null, new { @class = "btn btn-default" })</P>
 

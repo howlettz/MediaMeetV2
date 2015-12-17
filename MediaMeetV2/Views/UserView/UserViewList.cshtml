@@ -3,20 +3,20 @@
     ViewBag.Title = "ViewUserList";
 }
 
-<h2>ViewUserList</h2>
+<h2>All Users</h2>
 <table class="table">
     <tr>
         <td>
-            Username
+            <b>Username</b>
         </td>
         <td>
-            Real Name
+            <b>Real Name</b>
         </td>
         <td>
-            Location
+            <b>Location</b>
         </td>
         <td>
-            ---
+            <b>Details</b>
         </td>
     </tr>
 
@@ -25,6 +25,7 @@
 
         <tr>
             <td>
+
                 @Html.DisplayFor(modelItem => item.userName)
             </td>
             <td>
@@ -34,7 +35,7 @@
                 @Html.DisplayFor(modelItem => item.city), @Html.DisplayFor(modelItem => item.state)
             </td>
             <td>
-                @Html.ActionLink("View User Info", "ViewUser", new { id = item.Id }, new { @class = "btn btn-default" })
+                @Html.ActionLink("View User Info", "ViewUser", new { id = item.Id }, new { @class = "btn btn-info" })
             </td>
         </tr>
     }

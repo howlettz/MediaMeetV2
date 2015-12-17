@@ -16,11 +16,19 @@ namespace MediaMeetV2.Controllers
         public ActionResult ViewUser(int id)
         {
             ViewBag.Friendz = new List<String>();
+            String person;
             foreach (var Frie in repo.UserInfo(id).Friends)
             {
-                int exists = (from x in db.Friend where x.assocProfile.assocMember.Id == Frie.MemberID select x).Count();
-                if (exists > 0)
-                    ViewBag.Friendz.Add((from n in db.Member where n.Id == Frie.MemberID select n.userName).Single());
+                try {
+                   person  = (from x in db.Friend where x.assocProfile.assocMember.Id == Frie.MemberID && x.MemberID == id select x.assocProfile.assocMember.userName).Single();
+                }
+                catch (System.InvalidOperationException)
+                {
+                    person = null;
+                }
+                if (person != null)
+                    ViewBag.Friendz.Add(person);
+                //ViewBag.Friendz.Add((from n in db.Member where n.Id == Frie.MemberID select n.userName).Single());
             }
 
             return View(repo.UserInfo(id));
