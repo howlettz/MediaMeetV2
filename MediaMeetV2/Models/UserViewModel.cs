@@ -14,7 +14,8 @@ namespace MediaMeetV2.Models
         public string introduction { get; set; }
         public DateTime birthDate { get; set; }
         public string gender { get; set; }
-        public List<Interest> assocInterests { get; set; }
+        public IList<Interest> Interests { get; set; }
+        public IList<Friend> Friends { get; set; }
 
         //Location
         public string city { get; set; }

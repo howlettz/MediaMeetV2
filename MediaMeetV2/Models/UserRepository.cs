@@ -4,12 +4,14 @@ using System.Linq;
 using System.Web;
 using AutoMapper;
 using MediaMeetV2.Models;
-
+using System.Data.Entity;
+using System.Web.SessionState;
+using System.Web.UI;
 
 namespace MediaMeetV2.Models
 {
 
-    public class UserRepository
+    public class UserRepository : Page
     {
         private MediaMeetV2DbContext db = new MediaMeetV2DbContext();
 
@@ -18,6 +20,7 @@ namespace MediaMeetV2.Models
         {
 
             Mapper.CreateMap<Member, UserViewModel>()
+
                 .ForMember(x => x.userName, opt => opt.MapFrom(src => src.userName))
                 .ForMember(x => x.memberName, opt => opt.MapFrom(src => src.memberName))
                 .ForMember(x => x.introduction, opt => opt.MapFrom(src => src.assocProfile.introduction))
@@ -28,10 +31,17 @@ namespace MediaMeetV2.Models
                 .ForMember(x => x.country, opt => opt.MapFrom(src => src.assocProfile.assocDemographics.country))
                 .ForMember(x => x.dateJoined, opt => opt.MapFrom(src => src.dateJoined))
                 .ForMember(x => x.dateJoined, opt => opt.MapFrom(src => src.lastLogin))
-                .ForMember(x => x.assocInterests, opt => opt.MapFrom(src => src.assocProfile.assocInterests));
+                .ForMember(x => x.Interests, opt => opt.MapFrom(src => src.assocProfile.Interests))
+                .ForMember(x => x.Friends, opt => opt.MapFrom(src => src.assocProfile.Friends));
 
             Mapper.AssertConfigurationIsValid();
         }
+
+        public MediaMeetV2DbContext getDB()
+        {
+            return db;
+        }
+
 
         public UserViewModel UserInfo(int id)
         {
@@ -48,12 +58,20 @@ namespace MediaMeetV2.Models
             userv.state = demo.state;
             userv.country = demo.country;
             userv.Id = user.Id;
-            userv.assocInterests = prof.assocInterests;
 
-            if (userv.assocInterests == null)
+            if (prof.Interests == null)
             {
-                userv.assocInterests = new List<Interest>();
+                prof.Interests = new List<Interest>();
             }
+
+            if (prof.Friends == null)
+            {
+                prof.Friends = new List<Friend>();
+            }
+            db.SaveChanges();
+
+            userv.Interests = prof.Interests;
+            userv.Friends = prof.Friends;
 
             return userv;
         }
@@ -79,7 +97,6 @@ namespace MediaMeetV2.Models
             newProf.assocMember = newMem;
             db.Profile.Add(newProf);
             db.SaveChanges();
-
             
             db.SaveChanges();
 
@@ -131,16 +148,63 @@ namespace MediaMeetV2.Models
             var interes = db.Interest.Add(inter);
             db.SaveChanges();
 
-            Member memb = (from mem in db.Member where mem.Id == id select mem).Single();
-            Profile prof = (from pro in db.Profile where pro.Id == memb.ProfileID select pro).Single();
+            db.Member.Include("profile");
+            db.Profile.Include("Interests");
 
-            if (prof.assocInterests == null)
+            Member memb = db.Member.Find(id);
+            Profile prof = db.Profile.Find(memb.ProfileID);
+
+            if (prof.Interests == null)
             {
-                prof.assocInterests = new List<Interest>();
+                prof.Interests = new List<Interest>();
+
                 db.SaveChanges();
             }
 
-            prof.assocInterests.Add(interes);
+            if (interes.assocProfiles == null)
+            {
+                interes.assocProfiles = new List<Profile>();
+
+                db.SaveChanges();
+            }
+
+            prof.Interests.Add(interes);
+            interes.assocProfiles.Add(prof);
+
+            db.Entry(prof).State = EntityState.Modified;
+            db.Entry(interes).State = EntityState.Modified;
+            db.SaveChanges();
+        }
+
+        public void UserAddFriend(Friend frie, int id)
+        {
+            Member memb = db.Member.Find(id);
+            Profile prof = db.Profile.Find(memb.ProfileID);
+
+            frie.dateFriended = DateTime.Now;
+
+            frie.assocProfile = prof;
+
+            var frien = db.Friend.Add(frie);
+            db.SaveChanges();
+
+            db.Member.Include("profile");
+            db.Profile.Include("Friends");
+
+            
+
+            if (prof.Friends == null)
+            {
+                prof.Friends = new List<Friend>();
+
+                db.SaveChanges();
+            }
+
+            prof.Friends.Add(frien);
+            frien.assocProfile = prof;
+
+            db.Entry(prof).State = EntityState.Modified;
+            db.Entry(frien).State = EntityState.Modified;
             db.SaveChanges();
         }
 

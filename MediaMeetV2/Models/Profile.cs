@@ -17,13 +17,13 @@ namespace MediaMeetV2.Models
         public Demographics assocDemographics { get; set; }
         public int DemographicsID { get; set; }
 
-        public List<Interest> assocInterests { get; set; }
+        public virtual IList<Interest> Interests { get; set; }
 
-        public List<Photo> assocPhotos { get; set; }
+        public virtual IList<Photo> assocPhotos { get; set; }
 
-        public List<Friend> assocFriends { get; set; }
+        public virtual IList<Friend> Friends { get; set; }
 
-        public List<Message> assocMessages { get; set; }
+        public virtual IList<Message> assocMessages { get; set; }
 
     }
 }

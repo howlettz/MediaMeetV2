@@ -7,13 +7,13 @@ namespace MediaMeetV2.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class makeMemIdForeign : IMigrationMetadata
+    public sealed partial class FriendChanges : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(makeMemIdForeign));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(FriendChanges));
         
         string IMigrationMetadata.Id
         {
-            get { return "201511251843251_makeMemIdForeign"; }
+            get { return "201512132206236_FriendChanges"; }
         }
         
         string IMigrationMetadata.Source

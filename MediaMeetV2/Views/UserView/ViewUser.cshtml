@@ -1,4 +1,6 @@
 ﻿@model MediaMeetV2.Models.UserViewModel
+
+
 @{
     ViewBag.Title = "ViewUser";
 }
@@ -12,10 +14,19 @@
 <p>Gender: @Html.DisplayFor(model => model.gender)</p>
 <p>Birthday: @Html.DisplayFor(model => model.birthDate)<p>
 
-    @foreach(var inter in Model.assocInterests)
+    <h4>Interests</h4>
+    @foreach(var inter in Model.Interests)
     {
         <p>@Html.DisplayFor(x => inter.name)</p>
     }
 
+    <h4>Friend IDs</h4>
+
+    @foreach (var name in ViewBag.Friendz)
+    {
+        <p>@Html.DisplayFor(x => name)</p>
+    }
+
 <P>@Html.ActionLink("Add an interest", "UserAddInterest", new { id = Model.Id }, new {@class = "btn btn-default" })</P>
+<P>@Html.ActionLink("Add a Friend", "UserAddFriend", new { id = Model.Id }, new { @class = "btn btn-default" })</P>
 

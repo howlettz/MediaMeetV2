@@ -14,5 +14,8 @@ namespace MediaMeetV2.Models
         [Required]
         public String name { get; set; }
         public String description { get; set; }
+
+        
+        public List<Profile> assocProfiles { get; set; }
     }
 }

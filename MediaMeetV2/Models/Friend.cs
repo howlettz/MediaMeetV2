@@ -16,5 +16,7 @@ namespace MediaMeetV2.Models
         [Required]
         public DateTime dateFriended { get; set; }
 
+        public Profile assocProfile { get; set; }
+
     }
 }

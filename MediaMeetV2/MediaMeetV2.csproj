@@ -227,9 +227,33 @@
     <Compile Include="Migrations\201511250215586_InitialCreate.Designer.cs">
       <DependentUpon>201511250215586_InitialCreate.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201511251843251_makeMemIdForeign.cs" />
-    <Compile Include="Migrations\201511251843251_makeMemIdForeign.Designer.cs">
-      <DependentUpon>201511251843251_makeMemIdForeign.cs</DependentUpon>
+    <Compile Include="Migrations\201512091620002_InterestsReferBack.cs" />
+    <Compile Include="Migrations\201512091620002_InterestsReferBack.Designer.cs">
+      <DependentUpon>201512091620002_InterestsReferBack.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201512131905280_Friends.cs" />
+    <Compile Include="Migrations\201512131905280_Friends.Designer.cs">
+      <DependentUpon>201512131905280_Friends.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201512132206236_FriendChanges.cs" />
+    <Compile Include="Migrations\201512132206236_FriendChanges.Designer.cs">
+      <DependentUpon>201512132206236_FriendChanges.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201512141715592_oneProfile.cs" />
+    <Compile Include="Migrations\201512141715592_oneProfile.Designer.cs">
+      <DependentUpon>201512141715592_oneProfile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201512141753368_AddTheTable.cs" />
+    <Compile Include="Migrations\201512141753368_AddTheTable.Designer.cs">
+      <DependentUpon>201512141753368_AddTheTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201512141803551_ReallyAddIt.cs" />
+    <Compile Include="Migrations\201512141803551_ReallyAddIt.Designer.cs">
+      <DependentUpon>201512141803551_ReallyAddIt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201512141805392_20151214173368_AddTheTable.cs" />
+    <Compile Include="Migrations\201512141805392_20151214173368_AddTheTable.Designer.cs">
+      <DependentUpon>201512141805392_20151214173368_AddTheTable.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
@@ -243,7 +267,9 @@
     <Compile Include="Models\Message.cs" />
     <Compile Include="Models\Photo.cs" />
     <Compile Include="Models\Profile.cs" />
-    <Compile Include="Models\UserRepository.cs" />
+    <Compile Include="Models\UserRepository.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="Models\UserViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
@@ -278,7 +304,7 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\CollectionModelDescription.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
-    <None Include="Properties\PublishProfiles\MediaMeetV3.pubxml" />
+    <None Include="Properties\PublishProfiles\MediaMeetV4.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -345,6 +371,7 @@
     <Content Include="Views\ViewUser.cshtml" />
     <Content Include="Views\UserView\UserViewList.cshtml" />
     <Content Include="Views\UserView\UserAddInterest.cshtml" />
+    <Content Include="Views\UserView\UserAddFriend.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -361,8 +388,26 @@
     <EmbeddedResource Include="Migrations\201511250215586_InitialCreate.resx">
       <DependentUpon>201511250215586_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201511251843251_makeMemIdForeign.resx">
-      <DependentUpon>201511251843251_makeMemIdForeign.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201512091620002_InterestsReferBack.resx">
+      <DependentUpon>201512091620002_InterestsReferBack.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201512131905280_Friends.resx">
+      <DependentUpon>201512131905280_Friends.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201512132206236_FriendChanges.resx">
+      <DependentUpon>201512132206236_FriendChanges.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201512141715592_oneProfile.resx">
+      <DependentUpon>201512141715592_oneProfile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201512141753368_AddTheTable.resx">
+      <DependentUpon>201512141753368_AddTheTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201512141803551_ReallyAddIt.resx">
+      <DependentUpon>201512141803551_ReallyAddIt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201512141805392_20151214173368_AddTheTable.resx">
+      <DependentUpon>201512141805392_20151214173368_AddTheTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
